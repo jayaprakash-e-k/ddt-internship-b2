@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Tags</title>
+    </head>
+    <body>
+        <form action method="get">
+            <input type="text" required>
+
+            <input type="email">
+
+            <input type="number" placeholder="Enter your age">
+
+            <label for="dob">DOB</label>
+            <input type="date" id="dob">
+
+            <br>
+
+            <input type="checkbox" id="cb-1">
+            <label for="cb-1">CSE</label>
+
+            <br>
+
+            <input type="checkbox" id="cb-2">
+            <label for="cb-2">ECE</label>
+
+            <br>
+
+            <input type="radio" name="" id="r-1">
+            <label for="r-1">Male</label>
+
+            <input type="radio" name="gender" id="r-2">
+            <label for="r-2">Female</label>
+
+            <br>
+
+            <label for="dep">Department</label>
+            <select name="dep" id="dep">
+                <option value="CSE">Computer Science and Engineering</option>
+                <option value="ECE">ECE</option>
+                <option value="AI&DS">AI & DS</option>
+            </select>
+
+            <label for="address">Address</label>
+            <textarea name="address" id="address" rows="3" cols="30"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: #222;
+            }
+
+            form {
+                width: min(500px, 90%);
+                height: 300px;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            form input {
+                width: 90%;
+                padding: 10px 12px;
+                margin: 10px;
+            } 
+
+            form button {
+                width: 90%;
+                margin: 10px;
+                padding: 10px 12px;
+            }
+
+            form h2 {
+                text-align: center;
+            }
+
+            form a {
+                text-align: right;
+                margin-right: 20px;
+                text-decoration: none;
+                color: #222;
+                font-size: 16px;
+                font-weight: 600;
+                font-family: Arial, Helvetica, sans-serif;
+                text-transform: capitalize;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <h2>Sign In</h2>
+            <input type="text">
+            <input type="password">
+            <a href="#">Forget Password?</a>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>

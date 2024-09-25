@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Form</title>
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #222;
+            }
+
+            form {
+                /*width: min(90%, 500px); */
+                min-width: 500px;
+                background-color: #fff;
+                padding: 12px 15px;
+                border-radius: 10px;
+            }
+
+            form .input-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+                position: relative;
+            }
+
+            form .input-group i {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            form .input-group input {
+                padding: 10px 12px;
+            }
+
+            form .input-group input:focus {
+                outline: none;
+                border: 2px solid #0984e2;
+            }
+
+            form .input-group button {
+                background-color: #0984e2;
+                color: #fff;
+                padding: 12px 15px;
+                border: none;
+                outline: none;
+                font-size: 1.2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <i class="fa-solid fa-eye"></i>
+            </div>
+
+            <div class="input-group">
+                <button>Sign In</button>
+            </div>
+        </form>
+
+    </body>
+</html>

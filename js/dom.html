@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DOM</title>
+    </head>
+    <body>
+
+        <h1 id="heading">HELLO</h1>
+
+        <h2 class="heading-2">DDT</h2>
+        <h2 class="heading-2">Intern</h2>
+
+        <script>
+
+            var h1 = document.getElementById("heading");
+
+            h1.style.fontSize = "30px";
+            h1.style.color = "red";
+
+            var h2 = document.getElementsByClassName("heading-2");
+
+            for (let i = 0; i < h2.length; i++) {
+                h2[i].style.color = "green";
+            }
+
+            var headings = document.getElementsByTagName("h2");
+
+            headings[0].innerText = "H2 - <i> 1 </i>";
+
+            var dep = "CSE";
+            headings[1].innerHTML = `Department: <i>${dep}</i>`;
+
+        </script>
+    </body>
+</html>

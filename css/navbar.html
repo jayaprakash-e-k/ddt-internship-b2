@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NAVBAR CSS</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+
+        <nav>
+            <a href="./">
+                <img src="./logo.png" alt="DDT Logo" width="60px">
+                <span>DDT</span>
+            </a>
+
+            <button onclick="toggleNavbar()">
+                MENU
+            </button>
+
+            <ul id="nav-links">
+                <li>
+                    <a href="./" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="./">CONTACT</a>
+                </li>
+                <li>
+                    <a href="./">ABOUT</a>
+                </li>
+                <li>
+                    <a href="./">LOGIN</a>
+                </li>
+                <li>
+                    <a href="./">REGISTER</a>
+                </li>
+            </ul>
+        </nav>
+
+        <script>
+
+            function toggleNavbar() {
+
+                var navbar = document.getElementById("nav-links");
+
+                if (navbar.classList.contains("active")) {
+                    navbar.classList.remove("active");
+                } else {
+                    navbar.classList.add("active");
+                }
+
+            }
+
+        </script>
+    </body>
+</html>

@@ -41,15 +41,29 @@ nav ul li a:hover {
   background-color: #0984e2;
 }
 
+nav button {
+  display: none;
+}
+
 @media (max-width: 768px) {
   nav {
     position: relative;
   }
+
+  nav button {
+    display: block;
+  }
+
   nav ul {
     flex-direction: column;
     background-color: #222;
     position: absolute;
-    top: 80px;
+    top: -1000px;
     width: 100%;
+    transition: all 0.5s ease-in;
+  }
+
+  nav ul.active {
+    top: 80px;
   }
 }

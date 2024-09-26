@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Submit</title>
+    </head>
+    <body>
+        <form action="#" id="form">
+
+            <input type="text">
+
+            <button>Submit</button>
+        </form>
+
+        <script>
+
+            var form = document.getElementById("form");
+
+            form.addEventListener("submit", function(ev){
+
+                ev.preventDefault();
+
+                alert("Form Submitted");
+
+                var a = confirm("Are you sure?");
+
+                console.log(a);
+
+                var name = prompt("Enter your name");
+
+                console.log(name);
+            });
+
+        </script>
+    </body>
+</html>

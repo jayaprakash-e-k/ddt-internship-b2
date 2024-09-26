@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Handling</title>
+    </head>
+    <body>
+
+        <input type="text" id="num1" onkeyup="validate(this)">
+        <input type="text" id="num2" onkeydown="validate(this)">
+
+        <button onclick="calculate('+')">+</button>
+        <button onclick="calculate('-')">-</button>
+        <button onclick="calculate('*')">*</button>
+        <button onclick="calculate('/')">/</button>
+
+        <script>
+
+            function validate(inputTag) {
+                console.log(inputTag.value);
+            }
+
+
+            function calculate(op) {
+                var num1 = Number(document.getElementById("num1").value);
+                var num2 = Number(document.getElementById("num2").value);
+
+                switch (op) {
+                    case '+':
+                        break;
+                }
+            }
+
+            function clickMe() {
+                console.log("Button clicked");
+            }
+
+            var btn = document.getElementById("btn");
+
+            btn.addEventListener("click", function(){
+                var num1 = Number(document.getElementById("num1").value);
+                var num2 = Number(document.getElementById("num2").value);
+
+                console.log(num1 + num2);
+            });
+
+        </script>
+
+    </body>
+</html>

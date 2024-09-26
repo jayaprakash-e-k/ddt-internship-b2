@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Class List</title>
+
+        <style>
+
+            .box {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .red {
+                background-color: red;
+            }
+
+            .green {
+                background-color: green;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <div class="box red"></div>
+
+        <button onclick="changeBG()">Change BG</button>
+
+        <script>
+            
+            function changeBG() {
+                var box = document.getElementsByClassName('box')[0];
+
+                box.classList.toggle("red");
+
+                box.classList.toggle("green");
+            }
+
+        </script>
+
+    </body>
+</html>

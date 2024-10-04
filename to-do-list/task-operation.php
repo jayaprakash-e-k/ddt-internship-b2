@@ -1,6 +1,28 @@
 <?php
 include "./config.php";
 
+if (isset($_GET['operation']) && $_GET['operation'] == "getAllTasks") {
+
+    $result = mysqli_query($conn, "SELECT * FROM tasks");
+
+    $response = [];
+    if (mysqli_num_rows($result) > 0) {
+        $tasks = [];
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $tasks[] = $row;
+        }
+
+        $response['status'] = "success";
+        $response['data'] = $tasks;
+    } else {
+        $response['status'] = "error";
+        $response['message'] = "No data found";
+    }
+
+    echo json_encode($response);
+}
+
 if (isset($_POST['operation']) && $_POST['operation'] == "add" && isset($_POST['task'])) {
     $task = $_POST['task'];
 
@@ -55,6 +77,28 @@ if (isset($_POST['operation']) && $_POST['operation'] == "edit" && isset($_POST[
         }
     } else {
         header("Location: ./?msg=Task not found");
+        exit();
+    }
+}
+
+if (isset($_POST['operation']) && $_POST['operation'] == "updateStatus" && isset($_POST['taskId'])) {
+
+    $taskId = $_POST['taskId'];
+
+    $result = mysqli_query($conn, "SELECT * FROM tasks WHERE id='$taskId'");
+
+    if (mysqli_num_rows($result) > 0) {
+        $result = mysqli_query($conn, "UPDATE tasks SET is_completed='1' WHERE id='$taskId'");
+
+        if ($result) {
+            echo "Task updated successfully";
+            exit();
+        } else {
+            echo "Operation failed";
+            exit();
+        }
+    } else {
+        echo "Task not found";
         exit();
     }
 }

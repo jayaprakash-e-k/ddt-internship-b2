@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -17,41 +19,86 @@
         <button>ADD</button>
     </form>
 
-    <ul>
-        <?php
-        include "./config.php";
-
-        $result = mysqli_query($conn, "SELECT * FROM tasks");
-
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<li>
-                    <p id='task-{$row['id']}'>
-                        {$row['description']}
-                    </p>
-                    <button onclick=\"editTaskForm('{$row['id']}')\">
-                        Edit
-                    </button>
-                    <a href='./task-operation.php?operation=delete&id={$row['id']}'>
-                        delete
-                    </a>
-                </li>";
-            }
-        } else {
-            echo "<li>No Tasks Found</li>";
-        }
-        ?>
+    <ul id="task-list">
+        <li>
+            <p id='task-3' $isCompleted onclick="changeStatus('3')">
+                {$row['description']}
+            </p>
+            <button onclick="editTaskForm('3')">
+                Edit
+            </button>
+            <a href='./task-operation.php?operation=delete&id=3'>
+                delete
+            </a>
+        </li>
     </ul>
 
     <script>
+        $(document).ready(function() {
+            getTasks();
+        });
+
         function editTaskForm(id) {
             var task = document.getElementById(`task-${id}`).innerText;
 
-            document.getElementById("task").innerText = task;
-
+            // document.getElementById("task").innerText = task;
+            $("#task").text(task);
             document.getElementById("operation").value = "edit";
 
             document.getElementById("taskOperation").innerHTML += `<input type='hidden' name='taskId' value='${id}'>`;
+        }
+
+        function changeStatus(id) {
+            $.ajax({
+                url: './task-operation.php',
+                method: 'POST',
+                data: {
+                    taskId: id,
+                    operation: 'updateStatus'
+                },
+                success: function(data) {
+                    console.log(data);
+                    getTasks();
+                }
+            });
+        }
+
+        function getTasks() {
+            $.ajax({
+                url: './task-operation.php',
+                method: 'GET',
+                data: {
+                    operation: 'getAllTasks'
+                },
+                success: function(response) {
+                    var data = JSON.parse(response);
+
+                    if (data.status == "success") {
+
+                        $("#task-list").html("");
+                        data.data.forEach((element) => {
+                            var isCompleted = element.is_completed == 1 ? "style='color: green';" : "";
+
+                            var task = `<li>
+                                            <p id='task-${element.id}' ${isCompleted} onclick="changeStatus(${element.id})">
+                                                ${element.description}
+                                            </p>
+                                            <button onclick="editTaskForm(${element.id})">
+                                                Edit
+                                            </button>
+                                            <a href='./task-operation.php?operation=delete&id=${element.id}'>
+                                                delete
+                                            </a>
+                                        </li>`;
+
+                            $("#task-list").append(task);
+                        });
+
+                    } else {
+                        alert(data.message);
+                    }
+                }
+            })
         }
     </script>
 </body>
